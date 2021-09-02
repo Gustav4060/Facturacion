@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FormClientesComponent } from './cliente/form-clientes.component';
 import {Routes,RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes:Routes=[
   {path:'',redirectTo:'/cliente',pathMatch:'full'},
@@ -15,7 +16,7 @@ const routes:Routes=[
 ]
 @NgModule({
   declarations: [AppComponent, ClienteComponent, FormClientesComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,RouterModule.forRoot(routes),FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
