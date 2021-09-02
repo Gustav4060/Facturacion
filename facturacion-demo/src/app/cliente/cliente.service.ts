@@ -7,12 +7,13 @@ import { Cliente } from './cliente';
 })
 export class ClienteService {
   private url: string = 'http://localhost:8087/clientes/api/v1/listarClientes';
+  private urlInsert: string = 'http://localhost:8087/clientes/api/v1//inscliente';
   constructor(private http: HttpClient) {}
   //obtener cliente
   getAll(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.url);
   }
   create(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.url, cliente);
+    return this.http.post<Cliente>(this.urlInsert, cliente);
   }
 }
