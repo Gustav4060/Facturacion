@@ -1,31 +1,43 @@
 <div class="container">
-<h1>{{ titulo }}</h1>
-<div class="table-responsive">
-  <button class="btn btn-info" type="button" [routerLink]="['/cliente/form']">Nuevo cliente</button>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Direccion</th>
-      <th scope="col">Fecha Nacimiento</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cliente of clientes">
-      <th scope="row">{{ cliente.idCliente }}</th>
-      <td>{{ cliente.nombre }}</td>
-      <td>{{ cliente.apellido }}</td>
-      <td>{{ cliente.direccion }}</td>
-      <td>{{ cliente.fechaNacimiento }}</td>
-      <td>{{ cliente.telefono }}</td>
-      <td>{{ cliente.email }}</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+  <h1>{{ titulo }}</h1>
+  <div class="table-responsive">
+    <button class="btn btn-info" type="button" [routerLink]="['/cliente/form']">
+      Nuevo cliente
+    </button>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Fecha Nacimiento</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Email</th>
+          <th scope="col">EDITAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <th scope="row">{{ cliente.idCliente }}</th>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>{{ cliente.direccion }}</td>
+          <td>{{ cliente.fechaNacimiento }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>
+            <button
+              type="button"
+              name="button"
+              class="btn btn-primary"
+              [routerLink]="['/cliente/form', cliente.idCliente]"
+            >
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 
@@ -13,10 +13,21 @@ export class FormClientesComponent implements OnInit {
   titulo: string = 'Creacion de Clientes';
   constructor(
     private clienteServicio: ClienteService,
-    private router: Router
+    private router: Router,
+    private activatedRouter: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargar();
+  }
+  cargar(): void {
+    this.activatedRouter.params.subscribe((e) => {
+      let id = e['id'];
+      if (id) {
+        this.clienteServicio.getById(id).subscribe((es) => (this.cliente = es));
+      }
+    });
+  }
   create(): void {
     console.log(this.cliente);
     this.clienteServicio

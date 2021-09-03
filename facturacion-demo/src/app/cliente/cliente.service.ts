@@ -7,7 +7,10 @@ import { Cliente } from './cliente';
 })
 export class ClienteService {
   private url: string = 'http://localhost:8087/clientes/api/v1/listarClientes';
-  private urlInsert: string = 'http://localhost:8087/clientes/api/v1//inscliente';
+  private urlInsert: string =
+    'http://localhost:8087/clientes/api/v1//inscliente';
+  private urlgetById: string =
+    'http://localhost:8087/clientes/api/v1/clientePorId';
   constructor(private http: HttpClient) {}
   //obtener cliente
   getAll(): Observable<Cliente[]> {
@@ -16,5 +19,7 @@ export class ClienteService {
   create(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(this.urlInsert, cliente);
   }
+  getById(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.urlgetById + '/' + id);
+  }
 }
-
